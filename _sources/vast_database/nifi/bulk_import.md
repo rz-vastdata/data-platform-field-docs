@@ -1,6 +1,6 @@
 # Bulk Import from S3
 
-This pipeline leverages NiFi to extract objects from the VAST Datastore that contain Parquet files. The data is then imported into the VAST Database using the bulk import functionality.
+This pipeline leverages Apache NiFi 2.x to extract objects from the VAST Datastore that contain Parquet files. The data is then imported into the VAST Database using the bulk import functionality.
 
 The ingestion process occurs directly on the VAST CNODES, enabling data to flow seamlessly from the Datastore to the Database without passing through the NiFi servers. This direct transfer significantly optimizes the data pipeline by minimizing latency and resource consumption on the NiFi infrastructure.
 

@@ -188,7 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../ingestion/ingestion.html">Data Ingestion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ingestion/python.html">Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ingestion/nifi.html">NiFi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ingestion/nifi.html">Apache NiFi</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ingestion/python_kafka.html">Python Kafka</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ingestion/spark_streaming_python_sdk.html">Kafka and Spark Streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ingestion/spark.html">Spark</a></li>
@@ -213,8 +213,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../tuning/trino/howto.html">Tuning Trino</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">NiFi Patterns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="quickstart.html">NiFi Quickstart</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">Apache NiFi Patterns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html">Apache NiFi Quickstart</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bulk Import from S3</a></li>
 </ul>
 </details></li>
@@ -439,7 +439,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bulk-import-from-s3">
 <h1>Bulk Import from S3<a class="headerlink" href="#bulk-import-from-s3" title="Link to this heading">#</a></h1>
-<p>This pipeline leverages NiFi to extract objects from the VAST Datastore that contain Parquet files. The data is then imported into the VAST Database using the bulk import functionality.</p>
+<p>This pipeline leverages Apache NiFi 2.x to extract objects from the VAST Datastore that contain Parquet files. The data is then imported into the VAST Database using the bulk import functionality.</p>
 <p>The ingestion process occurs directly on the VAST CNODES, enabling data to flow seamlessly from the Datastore to the Database without passing through the NiFi servers. This direct transfer significantly optimizes the data pipeline by minimizing latency and resource consumption on the NiFi infrastructure.</p>
 <ul class="simple">
 <li><p>Configure ListS3 Processor</p></li>

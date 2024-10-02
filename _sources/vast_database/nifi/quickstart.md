@@ -1,6 +1,6 @@
 # NiFi 2.x Quickstart
 
-The VastDB NiFi 2.x Processors [Github repository](https://github.com/vast-data/vastdb_nifi) contains Nifi 2.x Processors for working with VastDB:
+The VastDB Apache NiFi 2.x Processors [Github repository](https://github.com/vast-data/vastdb_nifi) contains Apache Nifi 2.x Processors for working with VastDB:
 
   - **DeleteVastDB**: Deletes Vast DataBase Table rows
   - **DropVastDBTable**: Drop a Vast DataBase Table
