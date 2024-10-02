@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NiFi Quickstart &#8212; Data Platform Field Docs</title>
+    <title>NiFi 2.x Quickstart &#8212; Data Platform Field Docs</title>
   
   
   
@@ -410,7 +410,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NiFi Quickstart</h1>
+    <h1>NiFi 2.x Quickstart</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,9 +424,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="nifi-quickstart">
-<h1>NiFi Quickstart<a class="headerlink" href="#nifi-quickstart" title="Link to this heading">#</a></h1>
-<p>See the <a class="reference internal" href="../ingestion/nifi.html"><span class="std std-doc">NiFi Quickstart</span></a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="nifi-2-x-quickstart">
+<h1>NiFi 2.x Quickstart<a class="headerlink" href="#nifi-2-x-quickstart" title="Link to this heading">#</a></h1>
+<p>The VastDB NiFi 2.x Processors <a class="reference external" href="https://github.com/vast-data/vastdb_nifi">Github repository</a> contains Nifi 2.x Processors for working with VastDB:</p>
+<ul class="simple">
+<li><p><strong>DeleteVastDB</strong>: Deletes Vast DataBase Table rows</p></li>
+<li><p><strong>DropVastDBTable</strong>: Drop a Vast DataBase Table</p></li>
+<li><p><strong>ImportVastDB</strong>: High performance import of parquet files from Vast S3</p></li>
+<li><p><strong>PutVastDB</strong>: Writes data to a Vast DataBase Table</p></li>
+<li><p><strong>QueryVastDBTable</strong>: Queries a Vast DataBase Table</p></li>
+<li><p><strong>UpdateVastDB</strong>: Updates a Vast DataBase Table</p></li>
+</ul>
+<p>Visit the above URL for details.</p>
+<p>Here is an example from the above URL to quickly try NiFi with VastDB using docker:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>nifi_extensions
+<span class="nb">cd</span><span class="w"> </span>nifi_extensions
+
+<span class="nv">LATEST_RELEASE</span><span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import requests; print(requests.get(&#39;https://api.github.com/repos/vast-data/vastdb_nifi/releases/latest&#39;).json()[&#39;tag_name&#39;].lstrip(&#39;v&#39;))&quot;</span><span class="k">)</span>
+wget<span class="w"> </span>-c<span class="w"> </span>https://github.com/vast-data/vastdb_nifi/releases/download/v<span class="si">${</span><span class="nv">LATEST_RELEASE</span><span class="si">}</span>/vastdb_nifi-<span class="si">${</span><span class="nv">LATEST_RELEASE</span><span class="si">}</span>-linux-x86_64-py39.nar
+
+<span class="c1"># set this to the hostname or ip address where you are running NiFi</span>
+<span class="nv">NIFI_HOST</span><span class="o">=</span>hostname_or_ipaddress
+
+docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>nifi<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-p<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">NIFI_WEB_PROXY_HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">NIFI_HOST</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">SINGLE_USER_CREDENTIALS_USERNAME</span><span class="o">=</span>admin<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-e<span class="w"> </span><span class="nv">SINGLE_USER_CREDENTIALS_PASSWORD</span><span class="o">=</span><span class="m">123456123456</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>-v<span class="w"> </span>.:/opt/nifi/nifi-current/nar_extensions<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>apache/nifi:2.0.0-M4
+</pre></div>
+</div>
+<p>Wait a few minutes, then:</p>
+<ul class="simple">
+<li><p>Open the URL: <code class="docutils literal notranslate"><span class="pre">https://hostname_or_ipaddress:8443</span></code></p></li>
+<li><p>username: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
+<li><p>password: <code class="docutils literal notranslate"><span class="pre">123456123456</span></code></p></li>
+</ul>
+<p>Note:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--platform</span> <span class="pre">linux/amd64</span></code> is a hard requirement.</p></li>
+<li><p>If you receive a SNI error when accessing NiFi from your browser, verify the <code class="docutils literal notranslate"><span class="pre">NIFI_HOST</span></code> variable is set to your NiFi hostname or ip address.</p></li>
+<li><p>NiFi should be accessible when the logs output <code class="docutils literal notranslate"><span class="pre">org.apache.nifi.web.server.JettyServer</span> <span class="pre">Started</span> <span class="pre">Server</span> <span class="pre">on</span> <span class="pre">https://abcdefghi:8443/nifi</span></code></p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
