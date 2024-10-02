@@ -446,8 +446,8 @@ document.write(`
 <p><strong>WARNING</strong>: This notebook is in the process of being migrated to Vast Data Platform Field Docs.  It will probably not run yet.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>Bulk importation of data into VAST-DB, can be done with any method supported by the analytics/query engine.<br />
-Inserts, CTAS commands (CREATE TABLE AS [QUERY]), python scripts processing data frames, etc. Tools like Spark make this easy, but this type of processing will be slow compared to the LOAD operations supported by various databases. VAST-DB includes LOAD capabilities.</p>
+<p>Bulk import of data into VAST-DB, can be done with any method supported by the analytics/query engine.</p>
+<p>Inserts, CTAS commands (CREATE TABLE AS [QUERY]), python scripts processing data frames, etc. Tools like Spark make this easy, but this type of processing will be slow compared to the LOAD operations supported by various databases. VAST-DB includes LOAD capabilities.</p>
 <p>Ingesting Serialized Data Objects (LOAD)
 Parquet objects housed on VAST can be ingested directly into a VAST-DB table using an RPC call issued via the VAST-DB APIs. Issuing these calls is supported from Trino and Spark and this will usually be how these calls are made. Import process will look like this:</p>
 <ul class="simple">

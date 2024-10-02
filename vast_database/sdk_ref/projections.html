@@ -486,11 +486,11 @@ sorted into chunks for accelerated queries</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tzdata&gt;=2022.7 in /Users/chris.snow/.pyenv/versions/3.10.14/lib/python3.10/site-packages (from pandas&lt;3,&gt;=1.5.3-&gt;ibis-framework==9.0.0-&gt;vastdb) (2024.2)
-Requirement already satisfied: six&gt;=1.5 in /Users/chris.snow/.local/lib/python3.10/site-packages (from python-dateutil&lt;3,&gt;=2.8.2-&gt;ibis-framework==9.0.0-&gt;vastdb) (1.16.0)
-Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /Users/chris.snow/.pyenv/versions/3.10.14/lib/python3.10/site-packages (from rich&lt;14,&gt;=12.4.4-&gt;ibis-framework==9.0.0-&gt;vastdb) (3.0.0)
-Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /Users/chris.snow/.pyenv/versions/3.10.14/lib/python3.10/site-packages (from rich&lt;14,&gt;=12.4.4-&gt;ibis-framework==9.0.0-&gt;vastdb) (2.18.0)
-Requirement already satisfied: mdurl~=0.1 in /Users/chris.snow/.pyenv/versions/3.10.14/lib/python3.10/site-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&lt;14,&gt;=12.4.4-&gt;ibis-framework==9.0.0-&gt;vastdb) (0.1.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25hDownloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">87.5/87.5 kB</span> <span class=" -Color -Color-Red">6.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hDownloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Installing collected packages: flatbuffers, xmltodict, sqlglot, parsy, mdurl, jmespath, bidict, backoff, atpublic, markdown-it-py, botocore, aws-requests-auth, s3transfer, rich, ibis-framework, boto3, vastdb
+Successfully installed atpublic-4.1.0 aws-requests-auth-0.4.3 backoff-2.2.1 bidict-0.23.1 boto3-1.34.126 botocore-1.34.126 flatbuffers-24.3.25 ibis-framework-9.0.0 jmespath-1.0.1 markdown-it-py-3.0.0 mdurl-0.1.2 parsy-2.1 rich-13.7.1 s3transfer-0.10.1 sqlglot-23.12.2 vastdb-0.1.7 xmltodict-0.13.0
 </pre></div>
 </div>
 </div>
@@ -544,15 +544,6 @@ Requirement already satisfied: mdurl~=0.1 in /Users/chris.snow/.pyenv/versions/3
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ENDPOINT=&#39;http://localhost:8765&#39; 
-ACCESS_KEY=&#39;7XB5EJWVTRPELZHRE0D0&#39;
-DATABASE_NAME=&#39;vastdb&#39;
-DATABASE_SCHEMA=&#39;csnow_jbook&#39;
-TABLE_NAME=&#39;citizens&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,7 +566,7 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vast Cluster version:  (5, 0, 0, 71)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vast Cluster version:  (5, 1, 0, 131)
 </pre></div>
 </div>
 </div>
@@ -614,7 +605,7 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Schema doesn&#39;t exist: (&quot;Couldn&#39;t create table because it already exists&quot;, TableExists(bucket=&#39;vastdb&#39;, schema=&#39;csnow_jbook&#39;, table=&#39;citizens&#39;))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Table created: pythonsdkcitizen
 </pre></div>
 </div>
 </div>
@@ -685,9 +676,6 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Listing rows in: Database=&#39;vastdb&#39; Schema=&#39;csnow_jbook&#39; Table=&#39;citizens&#39;
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -741,58 +729,8 @@ TABLE_NAME=&#39;citizens&#39;
       <td>28.2</td>
       <td>True</td>
     </tr>
-    <tr>
-      <th>4</th>
-      <td>45</td>
-      <td>Alice</td>
-      <td>25.5</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>167</th>
-      <td>51</td>
-      <td>Menny</td>
-      <td>28.2</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>168</th>
-      <td>45</td>
-      <td>Alice</td>
-      <td>25.5</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>169</th>
-      <td>38</td>
-      <td>Bob</td>
-      <td>17.9</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>170</th>
-      <td>27</td>
-      <td>Koko</td>
-      <td>5.3</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>171</th>
-      <td>51</td>
-      <td>Menny</td>
-      <td>28.2</td>
-      <td>True</td>
-    </tr>
   </tbody>
 </table>
-<p>172 rows × 4 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -852,7 +790,7 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection created: Projection(name=&#39;demo-projection&#39;, table=Table(name=&#39;citizens&#39;, schema=Schema(name=&#39;csnow_jbook&#39;, bucket=Bucket(name=&#39;vastdb&#39;, tx=Transaction(id=0x02c400000000053e))), handle=811304132101693270, stats=TableStats(num_rows=172, size_in_bytes=4644, is_external_rowid_alloc=False, endpoints=()), _imports_table=False), handle=5252872530745859424, stats=TableStats(num_rows=0, size_in_bytes=0, is_external_rowid_alloc=False, endpoints=()))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection created: Projection(name=&#39;demo-projection&#39;, table=Table(name=&#39;pythonsdkcitizen&#39;, schema=Schema(name=&#39;python-sdk-schema&#39;, bucket=Bucket(name=&#39;demo-database&#39;, tx=Transaction(id=0x000030000000002d))), handle=1877086195346196137, stats=TableStats(num_rows=6, size_in_bytes=169, is_external_rowid_alloc=False, endpoints=()), _imports_table=False), handle=8168954746074489682, stats=TableStats(num_rows=0, size_in_bytes=0, is_external_rowid_alloc=False, endpoints=()))
 </pre></div>
 </div>
 </div>
@@ -902,10 +840,7 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Executing: table.projections(&#39;demo-projection&#39;)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection(name=&#39;demo-projection&#39;, table=Table(name=&#39;citizens&#39;, schema=Schema(name=&#39;csnow_jbook&#39;, bucket=Bucket(name=&#39;vastdb&#39;, tx=Transaction(id=0x02c400000000053f))), handle=811304132101693270, stats=TableStats(num_rows=172, size_in_bytes=4644, is_external_rowid_alloc=False, endpoints=()), _imports_table=False), handle=5252872530745859424, stats=TableStats(num_rows=0, size_in_bytes=0, is_external_rowid_alloc=False, endpoints=()))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection created: [Projection(name=&#39;demo-projection&#39;, table=Table(name=&#39;pythonsdkcitizen&#39;, schema=Schema(name=&#39;python-sdk-schema&#39;, bucket=Bucket(name=&#39;demo-database&#39;, tx=Transaction(id=0x000030000000002e))), handle=1877086195346196137, stats=TableStats(num_rows=6, size_in_bytes=169, is_external_rowid_alloc=False, endpoints=()), _imports_table=False), handle=8168954746074489682, stats=TableStats(num_rows=0, size_in_bytes=0, is_external_rowid_alloc=False, endpoints=()))]
 </pre></div>
 </div>
 </div>
@@ -970,9 +905,7 @@ TABLE_NAME=&#39;citizens&#39;
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection name before rename: demo-projection
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Projection name after rename: demo-projection-renamed
+Projection name after rename: demo-projection-renamed
 </pre></div>
 </div>
 </div>
