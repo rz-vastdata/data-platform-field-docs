@@ -411,7 +411,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -427,6 +429,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -438,10 +449,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="setup-vastdb-using-python-api">
 <h1>Setup VastDB using Python API<a class="headerlink" href="#setup-vastdb-using-python-api" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This example uses the Vast VMS API via the <a class="reference external" href="https://github.com/vast-data/vastpy">vastpy</a> library.</p>
+<p>This automation is based on the manual instructions available <a class="reference external" href="https://vast-data.github.io/data-platform-field-docs/vast_database/overview/getting_started.html">here</a></p>
 <p>This example has been tested on:</p>
 <ul class="simple">
 <li><p>5.1.0</p></li>
 </ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
 <p>First install the vastpy library</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -450,7 +468,15 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Next create a function that uses the Vast VMS API to configure a Vast Database.</p>
+<p>Next create a function <code class="docutils literal notranslate"><span class="pre">base_setup()</span></code> that configures a Vast Database.  The function creates:</p>
+<ul class="simple">
+<li><p>vippool</p></li>
+<li><p>user</p></li>
+<li><p>user S3 key</p></li>
+<li><p>view</p></li>
+<li><p>database</p></li>
+<li><p>database schema</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vastpy</span> <span class="kn">import</span> <span class="n">VASTClient</span>
@@ -562,12 +588,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>DANGER:</strong> Below will remove the following configuration from your cluster:</p>
+<p><strong>DANGER:</strong> The function <code class="docutils literal notranslate"><span class="pre">clean_env()</span></code>, below, will remove the following configuration from your cluster:</p>
 <ul class="simple">
-<li><p>database schemas</p></li>
-<li><p>views</p></li>
-<li><p>vippools</p></li>
-<li><p>users</p></li>
+<li><p>ALL database schemas</p></li>
+<li><p>ALL views</p></li>
+<li><p>ALL vippools</p></li>
+<li><p>ALL users</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,6 +633,7 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -663,6 +690,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
