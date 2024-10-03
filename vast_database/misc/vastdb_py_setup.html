@@ -438,11 +438,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="setup-vastdb-using-python-api">
 <h1>Setup VastDB using Python API<a class="headerlink" href="#setup-vastdb-using-python-api" title="Link to this heading">#</a></h1>
-<p><strong>WARNING</strong>: These example is untested.</p>
+<p>This example has been tested on:</p>
+<ul class="simple">
+<li><p>5.1.0</p></li>
+</ul>
 <p>First install the vastpy library</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">vastpy</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">vastpy</span>
 </pre></div>
 </div>
 </div>
@@ -455,7 +458,7 @@ document.write(`
 <span class="k">def</span> <span class="nf">base_setup</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
     <span class="n">client</span> <span class="o">=</span> <span class="n">VASTClient</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span>
 
-    <span class="n">database_owner</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;database_owner&#39;</span><span class="p">]</span>
+    <span class="n">database_owner</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">client</span><span class="o">.</span><span class="n">vippools</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;vippool&#39;</span><span class="p">])</span>
@@ -523,22 +526,22 @@ document.write(`
     <span class="p">},</span>
     <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s1">&#39;local&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-owner&#39;</span><span class="p">,</span>
         <span class="s1">&#39;uid&#39;</span><span class="p">:</span> <span class="mi">555</span><span class="p">,</span>
         <span class="s1">&#39;allow_create_bucket&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
         <span class="s1">&#39;s3_superuser&#39;</span><span class="p">:</span> <span class="kc">True</span>
     <span class="p">},</span>
     <span class="s1">&#39;viewpath&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;/demo-path&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;/demo_path&#39;</span><span class="p">,</span>
         <span class="s1">&#39;protocols&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;S3&#39;</span><span class="p">,</span> <span class="s1">&#39;DATABASE&#39;</span><span class="p">],</span>
         <span class="s1">&#39;create_dir&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-        <span class="s1">&#39;bucket&#39;</span><span class="p">:</span> <span class="s1">&#39;/demo-bucket&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;bucket_owner&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-owner&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bucket&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-db&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bucket_owner&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-owner&#39;</span><span class="p">,</span> <span class="c1"># must match user.name, above</span>
         <span class="s1">&#39;policy_id&#39;</span><span class="p">:</span> <span class="mi">3</span> 
     <span class="p">},</span>
     <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;demo_db&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="s1">&#39;demo_schema&#39;</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-db&#39;</span><span class="p">,</span>  <span class="c1"># must match viewpath.bucket, above</span>
+        <span class="s1">&#39;schema&#39;</span><span class="p">:</span> <span class="s1">&#39;demo-schema&#39;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -550,11 +553,56 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">base_setup</span><span class="p">(</span>
-    <span class="n">address</span><span class="o">=</span><span class="s1">&#39;http://11.0.0.2:9090&#39;</span><span class="p">,</span>
+    <span class="n">address</span><span class="o">=</span><span class="s1">&#39;VMS_HOST_OR_IP&#39;</span><span class="p">,</span>
     <span class="n">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="s1">&#39;password&#39;</span><span class="p">,</span>
     <span class="n">config</span><span class="o">=</span><span class="n">config</span>
     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>DANGER:</strong> Below will remove the following configuration from your cluster:</p>
+<ul class="simple">
+<li><p>database schemas</p></li>
+<li><p>views</p></li>
+<li><p>vippools</p></li>
+<li><p>users</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_env</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">VASTClient</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">schema</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">schemas</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting schema </span><span class="si">{</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> in database </span><span class="si">{</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">tables</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">],</span> <span class="n">schema_name</span><span class="o">=</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])[</span><span class="s1">&#39;results&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting Table </span><span class="si">{</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> in schema </span><span class="si">{</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;schema_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> in database </span><span class="si">{</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">client</span><span class="o">.</span><span class="n">tables</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">],</span> <span class="n">schema_name</span><span class="o">=</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tables deleted&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">schemas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">database_name</span><span class="o">=</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;database_name&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">schema</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schemas deleted&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">view</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="c1"># don&#39;t delete the default view</span>
+        <span class="k">if</span> <span class="n">view</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting view </span><span class="si">{</span><span class="n">view</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">views</span><span class="p">[</span><span class="n">view</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Views deleted&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">pool</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">vippools</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting vippool </span><span class="si">{</span><span class="n">pool</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">vippools</span><span class="p">[</span><span class="n">pool</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vippools deleted&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">client</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deleting user </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">users</span><span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Users deleted&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
