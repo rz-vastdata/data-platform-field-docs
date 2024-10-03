@@ -49,7 +49,9 @@ The spark-connector jars can be found in one of your VAST cluster’s CNODE’s
 ### Configuring Spark global config with VastDB
 
 The Spark default config should have the next configuration block, in order to interact with VastDB:
-- endpoint & data_endpoint’s are the configured VIP’s to access data path in your VAST cluster.
+
+- **endpoint** is the IP address of the VAST Cluster
+- **data_endpoint** is the list of all IPs in the Virtual IP pool
 
 ```bash
 #[VastDB]

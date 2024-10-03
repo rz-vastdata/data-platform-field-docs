@@ -530,7 +530,8 @@ document.write(`
 <h3>Configuring Spark global config with VastDB<a class="headerlink" href="#configuring-spark-global-config-with-vastdb" title="Link to this heading">#</a></h3>
 <p>The Spark default config should have the next configuration block, in order to interact with VastDB:</p>
 <ul class="simple">
-<li><p>endpoint &amp; data_endpoint’s are the configured VIP’s to access data path in your VAST cluster.</p></li>
+<li><p><strong>endpoint</strong> is the IP address of the VAST Cluster</p></li>
+<li><p><strong>data_endpoint</strong> is the list of all IPs in the Virtual IP pool</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#[VastDB]</span>
 
@@ -955,7 +956,7 @@ By VAST Data
     
 <div class="extra_footer">
   <p>
-  <a href="./feedback/intro.html">Provide Feedback</a>
+  <a href="https://vast-data.github.io/data-platform-field-docs/feedback/intro.html">Provide Feedback</a>
 </p>
 
 </div>
