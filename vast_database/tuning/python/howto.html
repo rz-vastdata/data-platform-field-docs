@@ -436,23 +436,24 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splits-and-subsplits"><strong>Splits and Subsplits</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-configuration-parameters"><strong>Query Configuration Parameters</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-splits-optional">1. <code class="docutils literal notranslate"><span class="pre">num_splits</span></code> (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-sub-splits-default-4">2. <code class="docutils literal notranslate"><span class="pre">num_sub_splits</span></code> (Default: 4)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-rows-per-sub-split-default-128-000-rows">3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128,000 rows)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-rows-per-sub-split-default-128-1024-rows">3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128 * 1024 rows)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-row-groups-per-sub-split-default-8">4. <code class="docutils literal notranslate"><span class="pre">num_row_groups_per_sub_split</span></code> (Default: 8)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-semi-sorted-projections-default-true">5. <code class="docutils literal notranslate"><span class="pre">use_semi_sorted_projections</span></code> (Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-sorted-projection-name-optional">6. <code class="docutils literal notranslate"><span class="pre">semi_sorted_projection_name</span></code> (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rows-per-split-default-4-000-000">7. <code class="docutils literal notranslate"><span class="pre">rows_per_split</span></code> (Default: 4,000,000)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-priority-optional">8. <code class="docutils literal notranslate"><span class="pre">queue_priority</span></code> (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-endpoints-optional">9. <code class="docutils literal notranslate"><span class="pre">data_endpoints</span></code> (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-1"><strong>Example Use Case 1:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-2"><strong>Example Use Case 2:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration"><strong>Advanced Configuration:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusion:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-1"><strong>Example Use Case 1</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-2"><strong>Example Use Case 2</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration"><strong>Advanced Configuration</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusion</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -473,11 +474,11 @@ document.write(`
 <section id="splits-and-subsplits">
 <h2><strong>Splits and Subsplits</strong><a class="headerlink" href="#splits-and-subsplits" title="Link to this heading">#</a></h2>
 <section id="overview">
-<h3>Overview:<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
 <p>In data processing, <strong>splits</strong> and <strong>subsplits</strong> are techniques used to divide large datasets into smaller chunks that can be processed concurrently. This improves query performance and optimizes resource usage in distributed or parallel processing environments.</p>
 </section>
 <section id="terminology">
-<h3>Terminology:<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h3>
+<h3>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Splits</strong>: A split refers to dividing a dataset into disjoint subsets (usually rows) that can be processed independently in parallel by different workers.</p></li>
 <li><p><strong>Subsplits</strong>: Further division of splits to allow more granular parallel processing. Subsplits enable fine-grained control over how data is processed by splitting each “split” into smaller subsets.</p></li>
@@ -501,8 +502,8 @@ document.write(`
 <li><p>Increasing the number of subsplits allows finer control of data processing and can lead to performance improvements, especially in environments that benefit from higher concurrency.</p></li>
 </ul>
 </section>
-<section id="limit-rows-per-sub-split-default-128-000-rows">
-<h4>3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128,000 rows)<a class="headerlink" href="#limit-rows-per-sub-split-default-128-000-rows" title="Link to this heading">#</a></h4>
+<section id="limit-rows-per-sub-split-default-128-1024-rows">
+<h4>3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128 * 1024 rows)<a class="headerlink" href="#limit-rows-per-sub-split-default-128-1024-rows" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Defines how many rows a <strong>subsplit</strong> can process before it completes and sends the data back to the client.</p></li>
 <li><p><strong>Use Case</strong>: This limit helps in controlling the granularity of each subsplit and can impact the responsiveness and parallelism of the query.</p></li>
@@ -544,9 +545,17 @@ document.write(`
 <li><p>Lower values mean higher priority, and if unset, the request is added to the end of the queue.</p></li>
 </ul>
 </section>
+<section id="data-endpoints-optional">
+<h4>9. <code class="docutils literal notranslate"><span class="pre">data_endpoints</span></code> (Optional)<a class="headerlink" href="#data-endpoints-optional" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>A list of strings representing endpoints.</p></li>
+<li><p>Each endpoint will be handled by a separate worker thread.</p></li>
+<li><p>A single endpoint can be specified more than once to benefit from multithreaded execution.</p></li>
+</ul>
+</section>
 </section>
 <section id="example-use-case-1">
-<h3><strong>Example Use Case 1:</strong><a class="headerlink" href="#example-use-case-1" title="Link to this heading">#</a></h3>
+<h3><strong>Example Use Case 1</strong><a class="headerlink" href="#example-use-case-1" title="Link to this heading">#</a></h3>
 <p>Let’s say you have a large table with 10 million rows. You want to execute a query that splits this table into smaller chunks, each of which is processed concurrently. You also want to ensure that each subsplit processes a limited number of rows before sending the results back.</p>
 <p>Here’s how you might configure it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vastdb.config</span> <span class="kn">import</span> <span class="n">QueryConfig</span>
@@ -566,7 +575,7 @@ document.write(`
 </ul>
 </section>
 <section id="example-use-case-2">
-<h3><strong>Example Use Case 2:</strong><a class="headerlink" href="#example-use-case-2" title="Link to this heading">#</a></h3>
+<h3><strong>Example Use Case 2</strong><a class="headerlink" href="#example-use-case-2" title="Link to this heading">#</a></h3>
 <p>Let’s say you have a large table with 10 million rows. You want to execute a query that returns only a small set of rows, similar to the SQL LIMIT operator (e.g. <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">table</span> <span class="pre">LIMIT</span> <span class="pre">n</span></code>).</p>
 <p>Here’s how you might configure it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">vastdb.config</span> <span class="kn">import</span> <span class="n">QueryConfig</span>
@@ -597,13 +606,14 @@ document.write(`
 </div>
 </section>
 <section id="advanced-configuration">
-<h3><strong>Advanced Configuration:</strong><a class="headerlink" href="#advanced-configuration" title="Link to this heading">#</a></h3>
+<h3><strong>Advanced Configuration</strong><a class="headerlink" href="#advanced-configuration" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Benchmarking</strong>: You can disable semi-sorted projections (<code class="docutils literal notranslate"><span class="pre">use_semi_sorted_projections</span> <span class="pre">=</span> <span class="pre">False</span></code>) for benchmarking purposes to compare performance without optimizations.</p></li>
+<li><p><strong>Endpoint Configuration:</strong> You can specify the endpoints using the data_endpoints parameter to control where each split is processed.</p></li>
 </ul>
 </section>
 <section id="conclusion">
-<h3><strong>Conclusion:</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<h3><strong>Conclusion</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
 <p>Splits and subsplits enable parallel query processing by breaking down large datasets into smaller chunks. By adjusting parameters such as <code class="docutils literal notranslate"><span class="pre">num_splits</span></code>, <code class="docutils literal notranslate"><span class="pre">num_sub_splits</span></code>, and <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code>, you can fine-tune the performance and concurrency of queries, making them highly scalable for large datasets.</p>
 </section>
 </section>
@@ -674,23 +684,24 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#splits-and-subsplits"><strong>Splits and Subsplits</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-configuration-parameters"><strong>Query Configuration Parameters</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-splits-optional">1. <code class="docutils literal notranslate"><span class="pre">num_splits</span></code> (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-sub-splits-default-4">2. <code class="docutils literal notranslate"><span class="pre">num_sub_splits</span></code> (Default: 4)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-rows-per-sub-split-default-128-000-rows">3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128,000 rows)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limit-rows-per-sub-split-default-128-1024-rows">3. <code class="docutils literal notranslate"><span class="pre">limit_rows_per_sub_split</span></code> (Default: 128 * 1024 rows)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#num-row-groups-per-sub-split-default-8">4. <code class="docutils literal notranslate"><span class="pre">num_row_groups_per_sub_split</span></code> (Default: 8)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-semi-sorted-projections-default-true">5. <code class="docutils literal notranslate"><span class="pre">use_semi_sorted_projections</span></code> (Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-sorted-projection-name-optional">6. <code class="docutils literal notranslate"><span class="pre">semi_sorted_projection_name</span></code> (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rows-per-split-default-4-000-000">7. <code class="docutils literal notranslate"><span class="pre">rows_per_split</span></code> (Default: 4,000,000)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#queue-priority-optional">8. <code class="docutils literal notranslate"><span class="pre">queue_priority</span></code> (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-endpoints-optional">9. <code class="docutils literal notranslate"><span class="pre">data_endpoints</span></code> (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-1"><strong>Example Use Case 1:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-2"><strong>Example Use Case 2:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration"><strong>Advanced Configuration:</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusion:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-1"><strong>Example Use Case 1</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case-2"><strong>Example Use Case 2</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-configuration"><strong>Advanced Configuration</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusion</strong></a></li>
 </ul>
 </li>
 </ul>
