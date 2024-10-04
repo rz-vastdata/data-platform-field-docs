@@ -1,6 +1,5 @@
 # Tuning
 
-
 <font color='red'><b>NOTE:</b> This documentation is currently under review. Please be aware that the information contained here is subject to change as we finalize our recommendations.
 </font>
 
@@ -110,8 +109,6 @@ with session.transaction() as tx:
 
 ### **Advanced Configuration:**
 - **Benchmarking**: You can disable semi-sorted projections (`use_semi_sorted_projections = False`) for benchmarking purposes to compare performance without optimizations.
- 
-- **Endpoint Configuration**: For distributed systems, you can specify the endpoints using the `data_endpoints` parameter to control where each split is processed.
 
 ### **Conclusion:**
 Splits and subsplits enable parallel query processing by breaking down large datasets into smaller chunks. By adjusting parameters such as `num_splits`, `num_sub_splits`, and `limit_rows_per_sub_split`, you can fine-tune the performance and concurrency of queries, making them highly scalable for large datasets.
