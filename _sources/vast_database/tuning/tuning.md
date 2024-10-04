@@ -1,3 +1,3 @@
 # Performance Tuning
 
-Content coming soon ...
+In this section we describe concepts for performance tuning Vast Database.
