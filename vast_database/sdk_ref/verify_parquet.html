@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Create Session &#8212; Data Platform Field Docs</title>
+    <title>Verifying Parquet Files &#8212; Data Platform Field Docs</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'vast_database/sdk_ref/create_session';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vast_database/sdk_ref/verify_parquet';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Verifying Parquet Files" href="verify_parquet.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="next" title="Importing Files using API" href="importing_files.html" />
+    <link rel="prev" title="Create Session" href="create_session.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,8 +206,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Python SDK Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Creating a session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="verify_parquet.html">Verifying Parquet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="create_session.html">Creating a session</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Verifying Parquet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importing_files.html">Importing Files, API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="importing_files_pandas.html">Importing Files, Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projections.html">Projections</a></li>
@@ -313,7 +313,7 @@
       
       
       
-      <li><a href="https://github.com/vast-data/data-platform-field-docs/issues/new?title=Issue%20on%20page%20%2Fvast_database/sdk_ref/create_session.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/vast-data/data-platform-field-docs/issues/new?title=Issue%20on%20page%20%2Fvast_database/sdk_ref/verify_parquet.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -343,7 +343,7 @@
       
       
       
-      <li><a href="../../_sources/vast_database/sdk_ref/create_session.ipynb" target="_blank"
+      <li><a href="../../_sources/vast_database/sdk_ref/verify_parquet.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,7 +353,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -427,7 +427,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Create Session</h1>
+    <h1>Verifying Parquet Files</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -437,8 +437,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-import-the-vast-db-sdk">Install and Import the Vast DB SDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-initial-session">Creating the initial session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
 </ul>
             </nav>
         </div>
@@ -450,108 +450,97 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="create-session">
-<h1>Create Session<a class="headerlink" href="#create-session" title="Link to this heading">#</a></h1>
-<section id="install-and-import-the-vast-db-sdk">
-<h2>Install and Import the Vast DB SDK<a class="headerlink" href="#install-and-import-the-vast-db-sdk" title="Link to this heading">#</a></h2>
-<p>Before doing anything else, we need to import the vastdb api library.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>vastdb<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>?25hDownloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">87.5/87.5 kB</span> <span class=" -Color -Color-Red">6.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hDownloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
-Installing collected packages: flatbuffers, xmltodict, sqlglot, parsy, mdurl, jmespath, bidict, backoff, atpublic, markdown-it-py, botocore, aws-requests-auth, s3transfer, rich, ibis-framework, boto3, vastdb
-Successfully installed atpublic-4.1.0 aws-requests-auth-0.4.3 backoff-2.2.1 bidict-0.23.1 boto3-1.34.126 botocore-1.34.126 flatbuffers-24.3.25 ibis-framework-9.0.0 jmespath-1.0.1 markdown-it-py-3.0.0 mdurl-0.1.2 parsy-2.1 rich-13.7.1 s3transfer-0.10.1 sqlglot-23.12.2 vastdb-0.1.7 xmltodict-0.13.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">vastdb</span>
-
-<span class="c1"># Import annotations.  This mode makes Python&#39;s behavior more strict, including</span>
-<span class="c1"># raising errors for some cases where variables are accidentally undefined.</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="verifying-parquet-files">
+<h1>Verifying Parquet Files<a class="headerlink" href="#verifying-parquet-files" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Vast DB is able to import Parquet files from Vast S3 in a highly optimised manner.  The Python SDK methods are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://vastdb-sdk.readthedocs.io/en/latest/table.html#vastdb.table.Table.import_files">vastdb.Table.import_files</a></p></li>
+<li><p><a class="reference external" href="https://vastdb-sdk.readthedocs.io/en/latest/table.html#vastdb.table.Table.import_partitioned_files">vastdb.table.Table.import_partitioned_files</a></p></li>
+<li><p><a class="reference external" href="https://vastdb-sdk.readthedocs.io/en/latest/util.html#vastdb.util.create_table_from_files">vastdb.util.create_table_from_files</a></p></li>
+</ul>
+<p>The vastdb import functionality requires parquet files to have only <a class="reference external" href="https://github.com/vast-data/vastdb_sdk/blob/main/docs/types.md">supported datatypes</a>.  This page provides an example script to verify columns in a parquet file and print out any offending columns.</p>
 </section>
-<section id="creating-the-initial-session">
-<h2>Creating the initial session<a class="headerlink" href="#creating-the-initial-session" title="Link to this heading">#</a></h2>
-<p>In the code below, we read the connection details from environment variables to enable automated teesting of the notebook.</p>
-<p>Change these to reflect your environment, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ENDPOINT</span> <span class="o">=</span> <span class="s1">&#39;http://your_vast_endpoint:12345&#39;</span>
-<span class="n">DATABASE_NAME</span> <span class="o">=</span> <span class="o">...</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
+<p>First run the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyarrow.parquet</span> <span class="k">as</span> <span class="nn">pq</span>
 
-<span class="n">ENDPOINT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ENDPOINT&#39;</span><span class="p">]</span>
-<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;ACCESS_KEY&#39;</span><span class="p">]</span>
-<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">]</span>
-<span class="n">DATABASE_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATABASE_NAME&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_&quot;hide-input&quot; docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="si">{</span><span class="n">ENDPOINT</span><span class="si">=}</span><span class="s2"> </span>
-<span class="si">{</span><span class="n">ACCESS_KEY</span><span class="si">=}</span>
-<span class="si">{</span><span class="n">DATABASE_NAME</span><span class="si">=}</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
-<span class="kn">import</span> <span class="nn">vastdb</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">class</span> <span class="nc">ParquetChecker</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">pq</span><span class="o">.</span><span class="n">read_schema</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>  <span class="c1"># Load only the schema</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allowed_types</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;UINT8&#39;</span><span class="p">,</span> <span class="s1">&#39;UINT16&#39;</span><span class="p">,</span> <span class="s1">&#39;UINT32&#39;</span><span class="p">,</span> <span class="s1">&#39;UINT64&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;INT8&#39;</span><span class="p">,</span> <span class="s1">&#39;INT16&#39;</span><span class="p">,</span> <span class="s1">&#39;INT32&#39;</span><span class="p">,</span> <span class="s1">&#39;INT64&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;STRING&#39;</span><span class="p">,</span> <span class="s1">&#39;LIST&#39;</span><span class="p">,</span> <span class="s1">&#39;STRUCT&#39;</span><span class="p">,</span> <span class="s1">&#39;MAP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;BOOL&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOAT&#39;</span><span class="p">,</span> <span class="s1">&#39;DOUBLE&#39;</span><span class="p">,</span> <span class="s1">&#39;BINARY&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DECIMAL128&#39;</span><span class="p">,</span> <span class="s1">&#39;DATE32&#39;</span><span class="p">,</span> <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;TIME32&#39;</span><span class="p">,</span> <span class="s1">&#39;TIME64&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span>
+        <span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">check_column_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks and prints out columns that do not match the allowed types.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checking column types...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)):</span>  <span class="c1"># Use len(self.schema) to get number of fields</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">column_type</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">type</span>
+            <span class="n">type_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">column_type</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-<span class="n">session</span> <span class="o">=</span> <span class="n">vastdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-    <span class="n">endpoint</span><span class="o">=</span><span class="n">ENDPOINT</span><span class="p">,</span>
-    <span class="n">access</span><span class="o">=</span><span class="n">ACCESS_KEY</span><span class="p">,</span>
-    <span class="n">secret</span><span class="o">=</span><span class="n">SECRET_KEY</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vast Cluster version: &quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">vast_version</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vast Cluster version:  (5, 1, 0, 131)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s test we can access the database and print out the schemas.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">transaction</span><span class="p">()</span> <span class="k">as</span> <span class="n">tx</span><span class="p">:</span>
-    <span class="n">bucket</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="n">DATABASE_NAME</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">type_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">allowed_types</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Column &#39;</span><span class="si">{</span><span class="n">column_name</span><span class="si">}</span><span class="s2">&#39; has a non-matching type: </span><span class="si">{</span><span class="n">type_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Column type check complete.&quot;</span><span class="p">)</span>
 
-    <span class="n">schemas</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">schemas</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">schemas</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">print_parquet_schema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prints the schema of the Parquet file.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parquet schema:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>You can use the class like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example usage</span>
+<span class="n">checker</span> <span class="o">=</span> <span class="n">ParquetChecker</span><span class="p">(</span><span class="s1">&#39;CC-MAIN-20180420081400-20180420101400-00000.gz.parquet&#39;</span><span class="p">)</span>
+<span class="n">checker</span><span class="o">.</span><span class="n">check_column_types</span><span class="p">()</span>
+</pre></div>
 </div>
+<p>The output is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Checking</span> <span class="n">column</span> <span class="n">types</span><span class="o">...</span>
+
+<span class="n">Column</span> <span class="s1">&#39;date&#39;</span> <span class="n">has</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">matching</span> <span class="nb">type</span><span class="p">:</span> <span class="n">TIMESTAMP</span><span class="p">[</span><span class="n">MS</span><span class="p">]</span>
+
+<span class="n">Column</span> <span class="nb">type</span> <span class="n">check</span> <span class="n">complete</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This tells us that the date column needs to be converted to a supported data type before importing the parquet file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">checker</span><span class="o">.</span><span class="n">print_parquet_schema</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This prints the whole schema, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Parquet</span> <span class="n">schema</span><span class="p">:</span>
+
+<span class="nb">id</span><span class="p">:</span> <span class="n">string</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="n">content_length</span><span class="p">:</span> <span class="n">uint32</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="n">date</span><span class="p">:</span> <span class="n">timestamp</span><span class="p">[</span><span class="n">ms</span><span class="p">]</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">string</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="n">content_type</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">concurrent_to</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">block_digest</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">payload_digest</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">ip_address</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">refers_to</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">target_uri</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">truncated</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">warc_info_id</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">filename</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">profile</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">identified_payload_type</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">segment_number</span><span class="p">:</span> <span class="n">uint32</span>
+<span class="n">segment_origin_id</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">segment_total_length</span><span class="p">:</span> <span class="n">uint32</span>
+<span class="n">body</span><span class="p">:</span> <span class="n">binary</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -587,20 +576,20 @@ Successfully installed atpublic-4.1.0 aws-requests-auth-0.4.3 backoff-2.2.1 bidi
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="create_session.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Create Session</p>
       </div>
     </a>
     <a class="right-next"
-       href="verify_parquet.html"
+       href="importing_files.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Verifying Parquet Files</p>
+        <p class="prev-next-title">Importing Files using API</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -620,8 +609,8 @@ Successfully installed atpublic-4.1.0 aws-requests-auth-0.4.3 backoff-2.2.1 bidi
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-import-the-vast-db-sdk">Install and Import the Vast DB SDK</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-initial-session">Creating the initial session</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
 </ul>
   </nav></div>
 
