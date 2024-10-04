@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NiFi 2.x Quickstart &#8212; Data Platform Field Docs</title>
+    <title>Performance Tuning &#8212; Data Platform Field Docs</title>
   
   
   
@@ -57,11 +57,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'vast_database/nifi/quickstart';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vast_database/sdk_ref/tuning';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Bulk Import from S3" href="bulk_import.html" />
-    <link rel="prev" title="Overview" href="overview.html" />
+    <link rel="next" title="Spark Operations Guide" href="../spark/overview.html" />
+    <link rel="prev" title="LIMIT n" href="limit_n.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -205,14 +205,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../query/spark.html">Spark</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../sdk_ref/intro.html">Python SDK Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/create_session.html">Creating a session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/verify_parquet.html">Verifying Parquet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/importing_files.html">Importing Files, API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/importing_files_pandas.html">Importing Files, Pandas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/projections.html">Projections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/limit_n.html">'LIMIT n' functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sdk_ref/tuning.html">Tuning</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Python SDK Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="create_session.html">Creating a session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="verify_parquet.html">Verifying Parquet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importing_files.html">Importing Files, API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="importing_files_pandas.html">Importing Files, Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projections.html">Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="limit_n.html">'LIMIT n' functionality</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tuning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../spark/overview.html">Spark Operations Guide</a></li>
@@ -221,9 +221,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../tuning/trino/howto.html">Tuning Trino</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">Apache NiFi Patterns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Apache NiFi Quickstart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bulk_import.html">Bulk Import from S3</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nifi/overview.html">Apache NiFi Patterns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nifi/quickstart.html">Apache NiFi Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nifi/bulk_import.html">Bulk Import from S3</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../misc/overview.html">Extras</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -314,7 +314,7 @@
       
       
       
-      <li><a href="https://github.com/vast-data/data-platform-field-docs/issues/new?title=Issue%20on%20page%20%2Fvast_database/nifi/quickstart.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/vast-data/data-platform-field-docs/issues/new?title=Issue%20on%20page%20%2Fvast_database/sdk_ref/tuning.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -344,7 +344,7 @@
       
       
       
-      <li><a href="../../_sources/vast_database/nifi/quickstart.md" target="_blank"
+      <li><a href="../../_sources/vast_database/sdk_ref/tuning.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NiFi 2.x Quickstart</h1>
+    <h1>Performance Tuning</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -440,50 +440,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="nifi-2-x-quickstart">
-<h1>NiFi 2.x Quickstart<a class="headerlink" href="#nifi-2-x-quickstart" title="Link to this heading">#</a></h1>
-<p>The VastDB Apache NiFi 2.x Processors <a class="reference external" href="https://github.com/vast-data/vastdb_nifi">Github repository</a> contains Apache Nifi 2.x Processors for working with VastDB:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="performance-tuning">
+<h1>Performance Tuning<a class="headerlink" href="#performance-tuning" title="Link to this heading">#</a></h1>
+<p>See:</p>
 <ul class="simple">
-<li><p><strong>DeleteVastDB</strong>: Deletes Vast DataBase Table rows</p></li>
-<li><p><strong>DropVastDBTable</strong>: Drop a Vast DataBase Table</p></li>
-<li><p><strong>ImportVastDB</strong>: High performance import of parquet files from Vast S3</p></li>
-<li><p><strong>PutVastDB</strong>: Writes data to a Vast DataBase Table</p></li>
-<li><p><strong>QueryVastDBTable</strong>: Queries a Vast DataBase Table</p></li>
-<li><p><strong>UpdateVastDB</strong>: Updates a Vast DataBase Table</p></li>
-</ul>
-<p>Visit the above URL for details.</p>
-<p>Here is an example from the above URL to quickly try NiFi with VastDB using docker:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>nifi_extensions
-<span class="nb">cd</span><span class="w"> </span>nifi_extensions
-
-<span class="nv">LATEST_RELEASE</span><span class="o">=</span><span class="k">$(</span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import requests; print(requests.get(&#39;https://api.github.com/repos/vast-data/vastdb_nifi/releases/latest&#39;).json()[&#39;tag_name&#39;].lstrip(&#39;v&#39;))&quot;</span><span class="k">)</span>
-wget<span class="w"> </span>-c<span class="w"> </span>https://github.com/vast-data/vastdb_nifi/releases/download/v<span class="si">${</span><span class="nv">LATEST_RELEASE</span><span class="si">}</span>/vastdb_nifi-<span class="si">${</span><span class="nv">LATEST_RELEASE</span><span class="si">}</span>-linux-x86_64-py39.nar
-
-<span class="c1"># set this to the hostname or ip address where you are running NiFi</span>
-<span class="nv">NIFI_HOST</span><span class="o">=</span>hostname_or_ipaddress
-
-docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>nifi<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-p<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-d<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-e<span class="w"> </span><span class="nv">NIFI_WEB_PROXY_HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">NIFI_HOST</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-e<span class="w"> </span><span class="nv">SINGLE_USER_CREDENTIALS_USERNAME</span><span class="o">=</span>admin<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-e<span class="w"> </span><span class="nv">SINGLE_USER_CREDENTIALS_PASSWORD</span><span class="o">=</span><span class="m">123456123456</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>-v<span class="w"> </span>.:/opt/nifi/nifi-current/nar_extensions<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>apache/nifi:2.0.0-M4
-</pre></div>
-</div>
-<p>Wait a few minutes, then:</p>
-<ul class="simple">
-<li><p>Open the URL: <code class="docutils literal notranslate"><span class="pre">https://hostname_or_ipaddress:8443</span></code></p></li>
-<li><p>username: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p></li>
-<li><p>password: <code class="docutils literal notranslate"><span class="pre">123456123456</span></code></p></li>
-</ul>
-<p>Note:</p>
-<ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">--platform</span> <span class="pre">linux/amd64</span></code> is a hard requirement.</p></li>
-<li><p>If you receive a SNI error when accessing NiFi from your browser, verify the <code class="docutils literal notranslate"><span class="pre">NIFI_HOST</span></code> variable is set to your NiFi hostname or ip address.</p></li>
-<li><p>NiFi should be accessible when the logs output <code class="docutils literal notranslate"><span class="pre">org.apache.nifi.web.server.JettyServer</span> <span class="pre">Started</span> <span class="pre">Server</span> <span class="pre">on</span> <span class="pre">https://abcdefghi:8443/nifi</span></code></p></li>
+<li><p>vippools (coming soon)</p></li>
+<li><p><a class="reference internal" href="../tuning/python/howto.html"><span class="std std-doc">Python SDK Tuning</span></a></p></li>
 </ul>
 </section>
 
@@ -500,7 +462,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> 
         },
         kernelOptions: {
             name: "python3",
-            path: "./vast_database/nifi"
+            path: "./vast_database/sdk_ref"
         },
         predefinedOutput: true
     }
@@ -518,20 +480,20 @@ docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="overview.html"
+       href="limit_n.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">LIMIT n</p>
       </div>
     </a>
     <a class="right-next"
-       href="bulk_import.html"
+       href="../spark/overview.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bulk Import from S3</p>
+        <p class="prev-next-title">Spark Operations Guide</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
