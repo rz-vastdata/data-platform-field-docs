@@ -4,6 +4,8 @@ In today's data-centric world, the ability to store, access, and process massive
 
 Vast Data Platform is a groundbreaking solution designed to meet the evolving demands of modern data workloads. With its unparalleled scalability, performance, and flexibility, Vast empowers organizations to unlock the full potential of their data and drive innovation across various industries.
 
+![Vast Data Platform](./vast_dataplatform.png)
+
 Key features and benefits of Vast Data Platform include:
 
 - Unmatched Scalability: Vast's disaggregated architecture allows for seamless horizontal scaling, ensuring that your storage capacity can grow with your data.
