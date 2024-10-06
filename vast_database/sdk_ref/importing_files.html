@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../vast_datastore/overview.html">Overview</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../vast_datastore/vastpy/overview.html">Python Library</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../vast_datastore/vastpy/enablecatalog.html">Enable Catalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vast_datastore/vastpy/vastdb_py_setup.html">Vast DB Setup</a></li>
 </ul>
 </details></li>
 </ul>
@@ -384,7 +385,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-text">Improved Text:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-import-the-vast-db-sdk">Install and Import the Vast DB SDK</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-initial-session">Creating the initial session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-using-the-importer-on-cnodes">Import using the importer on Cnodes</a><ul class="nav section-nav flex-column">
@@ -408,30 +408,18 @@ document.write(`
 <p><strong>WARNING</strong>: This notebook is in the process of being migrated to Vast Data Platform Field Docs.  It will probably not run yet.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-</section>
-<section id="improved-text">
-<h2>Improved Text:<a class="headerlink" href="#improved-text" title="Link to this heading">#</a></h2>
-<p><strong>Prompt:</strong> Improve the wording of the provided text about bulk importing data into VAST-DB.</p>
-<p><strong>Revised Text:</strong></p>
-<p><strong>Bulk Importing Data into VAST-DB</strong></p>
-<p>VAST-DB offers efficient bulk data ingestion methods tailored to various data formats and processing environments. While conventional approaches like direct inserts or CTAS commands can be used, VAST-DB’s specialized LOAD operations provide significant performance advantages.</p>
-<p><strong>Ingesting Serialized Data Objects (LOAD)</strong></p>
-<p>For optimal performance, VAST-DB supports the direct ingestion of Parquet files stored on VAST. This process involves:</p>
-<ol class="arabic simple">
-<li><p><strong>Table Preparation:</strong> Creating a target table with the desired schema in VAST-DB.</p></li>
-<li><p><strong>Data Placement:</strong> Storing Parquet files in an S3 bucket within the VAST storage infrastructure.</p></li>
-<li><p><strong>RPC Call:</strong> Issuing an RPC call to a VAST-DB CNode, specifying the location(s) of the Parquet files.</p></li>
-<li><p><strong>Distributed Ingestion:</strong> The VAST-DB CNode cluster then distributes the workload and efficiently imports the data directly from the files into the prepared table.</p></li>
-</ol>
-<p><strong>Additional Formats and Customization</strong></p>
-<p>While Parquet is currently the primary supported format, VAST-DB is extensible. Adding support for other formats like ORC, delimited text, CSV, JSON, etc., can be achieved through relatively straightforward development efforts. If you require support for a specific format, please don’t hesitate to request it.</p>
-<p><strong>Key Advantages of LOAD Operations</strong></p>
+<p>Bulk import of data into VAST-DB, can be done with any method supported by the analytics/query engine.</p>
+<p>Inserts, CTAS commands (CREATE TABLE AS [QUERY]), python scripts processing data frames, etc. Tools like Spark make this easy, but this type of processing will be slow compared to the LOAD operations supported by various databases. VAST-DB includes LOAD capabilities.</p>
+<p>Ingesting Serialized Data Objects (LOAD)
+Parquet objects housed on VAST can be ingested directly into a VAST-DB table using an RPC call issued via the VAST-DB APIs. Issuing these calls is supported from Trino and Spark and this will usually be how these calls are made. Import process will look like this:</p>
 <ul class="simple">
-<li><p><strong>Performance:</strong> LOAD operations are significantly faster than traditional methods, especially for large datasets.</p></li>
-<li><p><strong>Efficiency:</strong> VAST-DB’s distributed architecture optimizes data ingestion, handling large volumes of data efficiently.</p></li>
-<li><p><strong>Flexibility:</strong> The ability to ingest various data formats provides flexibility in data integration scenarios.</p></li>
+<li><p>The target table with schema is prepared in VAST-DB</p></li>
+<li><p>Data is placed in an S3 bucket on VAST storage</p></li>
+<li><p>An RPC call is made to a VAST-DB CNode directing it to the object location(s) in VAST</p></li>
+<li><p>The VAST-DB CNode cluster will then divide the workload and import the data directly from the file and into the prepared table.</p></li>
 </ul>
-<p>By leveraging VAST-DB’s LOAD capabilities, you can efficiently and effectively bulk import data into your VAST-DB environment, enabling powerful analytics and insights.</p>
+<p>Currently, Parquet is the only format supported for this operation, however creating additional filters for ORC, delimited text, CSV, JSON, etc. is a simple development task (if you want it, just ask).
+Bulk importation of data into VAST-DB, can be done with any method supported by the analytics/query engine. Inserts, CTAS commands (CREATE TABLE AS [QUERY]), python scripts processing data frames, etc. Tools like Spark make this easy, but this type of processing will be slow compared to the LOAD operations supported by various databases. VAST-DB includes LOAD capabilities.</p>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><strong>Method</strong>: table.import_file</p></li>
@@ -961,7 +949,6 @@ Schema(name=&#39;python-sdk-schema&#39;, bucket=Bucket(name=&#39;demo-database&#
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-text">Improved Text:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-and-import-the-vast-db-sdk">Install and Import the Vast DB SDK</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-the-initial-session">Creating the initial session</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-using-the-importer-on-cnodes">Import using the importer on Cnodes</a><ul class="nav section-nav flex-column">
