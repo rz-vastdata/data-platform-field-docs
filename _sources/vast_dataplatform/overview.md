@@ -13,4 +13,4 @@ Key features and benefits of Vast Data Platform include:
 - Flexibility and Versatility: Handle a wide range of data types and formats, from structured to unstructured, making Vast suitable for diverse applications.
 - Simplified Management: Benefit from a user-friendly interface and automation features that streamline storage management and reduce operational overhead.
 
-Watch this space for content for Vast Datastore!
+Watch this space for content for Vast DataPlatform!
